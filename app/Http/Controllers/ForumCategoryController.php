@@ -12,6 +12,7 @@ class ForumCategoryController extends Controller
     {
         $categories = ForumCategory::latest()->take(3)->get();
         return view('index', ['categories' => $categories]);
+
     }
 
     public function category_create()
