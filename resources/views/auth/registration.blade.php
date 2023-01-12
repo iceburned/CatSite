@@ -7,10 +7,10 @@
     <meta name="keywords" content="Member Login">
     <meta name="description" content="">
     <title>Login</title>
-    <link rel="stylesheet" href="{% static '/forum/css/nicepage.css' %}" media="screen">
-    <link rel="stylesheet" href="{% static 'users/css/Login.css' %}" media="screen">
-    <script class="u-script" type="text/javascript" src="{% static '/forum/js/jquery.js' %}" defer=""></script>
-    <script class="u-script" type="text/javascript" src="{% static 'forum/js/nicepage.js' %}" defer=""></script>
+    <link rel="stylesheet" href="{{asset('/forum/css/nicepage.css')}}" media="screen">
+    <link rel="stylesheet" href="{{asset('/users/css/Login.css')}}" media="screen">
+    <script class="u-script" type="text/javascript" src="{{asset('/forum/js/jquery.js')}}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{asset('/forum/js/nicepage.js')}}" defer=""></script>
     <meta name="generator" content="#">
     <link id="u-theme-google-font" rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -41,13 +41,14 @@
                     </svg>
                 </a>
             </div>
+
             <div class="u-custom-menu u-nav-container">
                 <ul class="u-nav u-unstyled">
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'category' %}">Home</a>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{route('index')}}">Home</a>
                     </li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'Log-in' %}">Login</a>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{route('login')}}">Login</a>
                     </li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{% url 'about_page' %}">About</a>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{route('about')}}">About</a>
                     </li>
                 </ul>
 
@@ -60,21 +61,21 @@
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-align-center u-container-style u-grey-25 u-group u-shape-rectangle u-group-1">
             <div class="u-container-layout u-valign-top u-container-layout-1"><span class="u-file-icon u-icon u-icon-1"><img
-                        src="{% static 'users/images/7399de1107c7f8cd95591f3755c1e07a.jpg' %}" alt=""></span>
+                        src="{{asset('users/images/7399de1107c7f8cd95591f3755c1e07a.jpg')}}" alt=""></span>
                 <h2 class="u-text u-text-body-alt-color u-text-default u-text-1">Member Register</h2>
                 <div class="u-form u-login-control u-form-1">
                     <form action="{{ route('register.custom') }}" method="POST">
                         @csrf
                         <div class="form-group mb-3">
-                            <input type="text" placeholder="Name" id="name" class="form-control" name="name"
-                                   required autofocus>
-                            @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                            <label for="username"></label><input type="text" placeholder="Username" id="username" class="form-control" name="username"
+                                                                 required autofocus>
+                            @if ($errors->has('username'))
+                                <span class="text-danger">{{ $errors->first('username') }}</span>
                             @endif
                         </div>
                         <div class="form-group mb-3">
-                            <input type="text" placeholder="Email" id="email_address" class="form-control"
-                                   name="email" required autofocus>
+                            <label for="email_address"></label><input type="text" placeholder="Email" id="email_address" class="form-control"
+                                                                      name="email" required autofocus>
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             @endif
@@ -86,14 +87,22 @@
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
                         </div>
-                        <div class="form-group mb-3">
-                            <div class="checkbox">
-                                <label><input type="checkbox" name="remember"> Remember Me</label>
-                            </div>
+{{--                        <div class="form-group mb-3">--}}
+{{--                            <div class="checkbox">--}}
+{{--                                <label><input type="checkbox" name="remember"> Remember Me</label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="d-grid mx-auto">--}}
+{{--                            <button type="submit" class="btn btn-dark btn-block">Sign up</button>--}}
+{{--                        </div>--}}
+                        <div class="u-align-left u-form-group u-form-submit">
+                            <button type="submit"
+                                    class="u-active-palette-2-light-2 u-border-none u-btn u-btn-submit u-button-style u-hover-palette-2-light-2 u-palette-5-dark-1 u-text-active-palette-2-base u-text-body-alt-color u-text-hover-palette-2-base u-btn-1">
+                                Register
+                            </button>
+                            <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
-                        <div class="d-grid mx-auto">
-                            <button type="submit" class="btn btn-dark btn-block">Sign up</button>
-                        </div>
+                        <input type="hidden" value="" name="recaptchaResponse">
                     </form>
 {{--                    <form method="post"--}}
 {{--                          class="u-clearfix u-form-custom-backend u-form-spacing-10 u-form-vertical u-inner-form"--}}
