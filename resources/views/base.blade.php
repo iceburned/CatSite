@@ -1,4 +1,3 @@
-{{--{% load static %}--}}
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
 <head>
@@ -7,10 +6,10 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title></title>
-    <link rel="stylesheet" href="{{ asset('css/nicepage.css') }}" media="screen">
-    <link rel="stylesheet" href="{{ asset('css/Home.css') }}" media="screen">
-    <script class="u-script" type="text/javascript" src="{{ asset('js/jquery.js') }}" defer=""></script>
-    <script class="u-script" type="text/javascript" src="{{ asset('js/nicepage.js') }}" defer=""></script>
+    <link rel="stylesheet" href="{{ asset('/forum/css/nicepage.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ asset('/forum/css/Home.css') }}" media="screen">
+    <script class="u-script" type="text/javascript" src="{{ asset('/forum/js/jquery.js') }}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{ asset('/forum/js/nicepage.js') }}" defer=""></script>
     <meta name="generator" content="">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet"
@@ -25,7 +24,6 @@
 <header class="u-clearfix u-header" id="sec-70aa">
     <div class="u-clearfix u-sheet u-sheet-1">
 
-        {#      -------right login link --------------#}
         <a class="u-align-left u-custom-font u-font-lobster u-login u-text-black u-text-hover-palette-2-light-2 u-login-1">Cit-Cat!</a>
 
         <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -47,22 +45,21 @@
             <div class="u-custom-menu u-nav-container">
                 <ul class="u-custom-font u-font-lobster u-nav u-unstyled u-nav-1">
                     <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-palette-5-dark-1"
-                                              href="{% url 'category' %}">Home</a></li>
+                                              href="{{route('index')}}">Home</a></li>
 
-                    {% if user.is_authenticated %}
+                    @if(auth()->check())
                     <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-palette-5-dark-1"
-                                              href="{% url 'Log-out' %}">Logout</a></li>
+                                              href="{{route('signout')}}">Logout</a></li>
                     <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-palette-5-dark-1"
-                                              href="{% url 'about_page' %}">About</a></li>
-
-                    {% else %}
+                                              href="{{route('about')}}">About</a></li>
+                    @else
                     <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-palette-5-dark-1"
-                                              href="{% url 'Log-in' %}">Login</a></li>
+                                              href="{{route('login')}}">Login</a></li>
                     <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-palette-5-dark-1"
-                                              href="{% url 'Register' %}">Register</a></li>
+                                              href="{{route('register-user')}}">Register</a></li>
                     <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-palette-5-dark-1"
-                                              href="{% url 'about_page' %}">About</a></li>
-                    {% endif %}
+                                              href="{{route('about')}}">About</a></li>
+                    @endif
                 </ul>
             </div>
             <div class="u-custom-menu u-nav-container-collapse">
@@ -89,7 +86,7 @@
                 <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
             </div>
         </nav>
-        {% if search_flag and subcategory_flag %}
+        @if(False)
         <form action="{% url 'search' subcategory_pk %}" method="get"
               class="u-align-left u-border-1 u-border-grey-30 u-search u-search-left u-white u-search-1">
             <button class="u-search-button" type="submit">
@@ -103,7 +100,7 @@
             </button>
             <input class="u-search-input" type="search" name="q" value="" placeholder="Search">
         </form>
-        {% elif search_flag %}
+        @elseif(False)
         <form action="{% url 'search_topic' subcategory_pk topics_ek %}" method="get"
               class="u-align-left u-border-1 u-border-grey-30 u-search u-search-left u-white u-search-1">
             <button class="u-search-button" type="submit">
@@ -117,12 +114,10 @@
             </button>
             <input class="u-search-input" type="search" name="q" value="" placeholder="Search">
         </form>
-        {% endif %}
+        @endif
     </div>
 </header>
 
-{{--{% block nav %}--}}
-{{--{% endblock %}--}}
     @yield('nav')
 
 <footer class="u-align-center u-clearfix u-footer u-grey-90 u-footer" id="sec-12d5">

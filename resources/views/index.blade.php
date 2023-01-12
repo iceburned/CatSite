@@ -105,6 +105,14 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                 <h1>Categories</h1>
 
 {{--                {% if user.is_superuser %}--}}
+{{--                <p> User ID: {{ Auth::user()->id }} </p>--}}
+                @if(auth()->check())
+                    <p>User authenticated</p>
+
+                @else()
+                    <p>NOT authenticated!</p>
+
+                @endif
                 @if(True)
                 <div>
                     <a href="{% url 'category_create' %}"
@@ -116,7 +124,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 {{--                {#              ------------------- first post----------------------#}--}}
 {{--                {% for category in object_list %}--}}
                 @foreach($categories as $category)
-                    e
+
                 <div class="u-container-style u-custom-item u-list-item u-palette-3-light-3 u-radius-30 u-repeater-item u-shape-round"
                      title="Forum">
                     <div class="u-container-layout u-similar-container u-container-layout-1">

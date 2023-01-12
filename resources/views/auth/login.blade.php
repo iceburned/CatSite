@@ -66,8 +66,6 @@
     </div>
         <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
     </div>
-
-
 </header>
 <section class="u-clearfix u-image u-section-1" id="sec-eb94" data-image-width="1771" data-image-height="1121">
     <div class="u-clearfix u-sheet u-sheet-1">
@@ -91,19 +89,27 @@
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             @endif
                         </div>
-                        <div class="form-group mb-3">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="remember"> Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#"
-                               class="u-active-palette-2-light-2 u-border-none u-btn u-btn-submit u-button-style u-hover-palette-2-light-2 u-palette-5-dark-1 u-text-active-palette-2-base u-text-body-alt-color u-text-hover-palette-2-base u-btn-1">Login</a>
+                        <div class="u-align-left u-form-group u-form-submit">
+                            <button type="submit"
+                                    class="u-active-palette-2-light-2 u-border-none u-btn u-btn-submit u-button-style u-hover-palette-2-light-2 u-palette-5-dark-1 u-text-active-palette-2-base u-text-body-alt-color u-text-hover-palette-2-base u-btn-1">
+                                Login
+                            </button>
                             <input type="submit" value="submit" class="u-form-control-hidden">
                         </div>
                         <input type="hidden" value="" name="recaptchaResponse">
+{{--                        <div class="form-group mb-3">--}}
+{{--                            <div class="checkbox">--}}
+{{--                                <label>--}}
+{{--                                    <input type="checkbox" name="remember"> Remember Me--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <a href="#"--}}
+{{--                               class="u-active-palette-2-light-2 u-border-none u-btn u-btn-submit u-button-style u-hover-palette-2-light-2 u-palette-5-dark-1 u-text-active-palette-2-base u-text-body-alt-color u-text-hover-palette-2-base u-btn-1">Login</a>--}}
+{{--                            <input type="submit" value="submit" class="u-form-control-hidden">--}}
+{{--                        </div>--}}
+{{--                        <input type="hidden" value="" name="recaptchaResponse">--}}
 {{--                        <div class="d-grid mx-auto">--}}
 {{--                            <button type="submit" class="btn btn-dark btn-block">Signin</button>--}}
 {{--                        </div>--}}

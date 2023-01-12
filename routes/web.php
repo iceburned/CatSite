@@ -36,7 +36,7 @@ Route::get('/posts/edit/', [ForumPostsController::class, 'forum_posts_edit'])->n
 Route::get('/posts/delete/', [ForumPostsController::class, 'forum_posts_delete'])->name('post-delete');
 
 //users
-Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
+//Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
