@@ -20,8 +20,11 @@ use App\Http\Controllers\AboutPageController;
 //Categories
 Route::get('/', [ForumCategoryController::class, 'index'])->name('index');
 Route::get('/create/', [ForumCategoryController::class, 'category_create'])->name('category-create');
-Route::get('/edit/', [ForumCategoryController::class, 'category_edit'])->name('category-edit');
-Route::get('/delete/', [ForumCategoryController::class, 'category_delete'])->name('category-delete');
+Route::post('/custom-create/', [ForumCategoryController::class, 'category_create_custom'])->name('category-create-custom');
+Route::get('/edit/{id}', [ForumCategoryController::class, 'category_edit'])->name('category-edit');
+Route::post('/custom-edit/{id}', [ForumCategoryController::class, 'category_edit_custom'])->name('category-edit-custom');
+Route::get('/delete/{id}', [ForumCategoryController::class, 'category_delete'])->name('category-delete');
+Route::post('/custom-delete/{id}', [ForumCategoryController::class, 'category_delete_custom'])->name('category-delete-custom');
 
 //Topics
 Route::get('/topics/', [ForumTopicsController::class, 'forum_topics'])->name('topics');

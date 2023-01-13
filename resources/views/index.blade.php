@@ -1,10 +1,5 @@
-<!DOCTYPE html>
 @extends('base')
-{{--<!DOCTYPE html>--}}
-{{--{% extends 'base.html' %}--}}
-{{--{% load static %}--}}
-{{--{% block nav %}--}}
-    @section('nav')
+@section('nav')
 
 <section class="u-clearfix u-container-align-center u-image u-image-contain u-section-1" id="sec-1f19"
          data-image-width="3224" data-image-height="1076">
@@ -105,7 +100,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                 <h1>Categories</h1>
 
 {{--                {% if user.is_superuser %}--}}
-{{--                <p> User ID: {{ Auth::user()->id }} </p>--}}
+                {{--                <p> User ID: {{ Auth::user()->id }} </p>--}}
                 @if(auth()->check())
                     <p>User authenticated</p>
 
@@ -114,26 +109,28 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 
                 @endif
                 @if(True)
-                <div>
-                    <a href="{% url 'category_create' %}"
-                       class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1">Create
-                        Category</a>
-                </div>
-{{--                {% endif %}--}}
+                    <div>
+                        <a href="{{route('category-create')}}"
+                           class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1">Create
+                            Category</a>
+                    </div>
+                    {{--                {% endif %}--}}
                 @endif
-{{--                {#              ------------------- first post----------------------#}--}}
-{{--                {% for category in object_list %}--}}
+                {{--                {#              ------------------- first post----------------------#}--}}
+                {{--                {% for category in object_list %}--}}
                 @foreach($categories as $category)
+                    <p>{{$category->id}}</p>
 
-                <div class="u-container-style u-custom-item u-list-item u-palette-3-light-3 u-radius-30 u-repeater-item u-shape-round"
-                     title="Forum">
-                    <div class="u-container-layout u-similar-container u-container-layout-1">
-                        <div class="u-shape u-shape-svg u-text-palette-5-dark-1 u-shape-1">
-                            <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 150" style="">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8446"></use>
-                            </svg>
-                            <svg class="u-svg-content" viewBox="0 0 160 150" x="0px" y="0px" id="svg-8446"
-                                 style="enable-background:new 0 0 160 150;">
+                    <div
+                        class="u-container-style u-custom-item u-list-item u-palette-3-light-3 u-radius-30 u-repeater-item u-shape-round"
+                        title="Forum">
+                        <div class="u-container-layout u-similar-container u-container-layout-1">
+                            <div class="u-shape u-shape-svg u-text-palette-5-dark-1 u-shape-1">
+                                <svg class="u-svg-link" preserveAspectRatio="none" viewBox="0 0 160 150" style="">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8446"></use>
+                                </svg>
+                                <svg class="u-svg-content" viewBox="0 0 160 150" x="0px" y="0px" id="svg-8446"
+                                     style="enable-background:new 0 0 160 150;">
                                 <path d="M96.9,124.1c12.9,1.3,17.4,5.4,19.7,17.7c0.2,1.2,0.8,2.2,1.5,3.2c4.1,5.3,16.4,6.8,21.7,2.6c2.8-2.2,3.8-5.1,3.3-8.5
 	c-0.6-3.6-2.6-6.2-6.2-7.1c-2.6-0.6-3.3-1.9-3.1-4.2c0.1-1.3,0.1-2.6,0-3.9c-0.7-8.5,0.7-16.1,5.7-23.7c6.7-10.1,8.1-22.2,7.3-34.2
 	c-0.3-4.8,0.9-8.2,5.4-10.3c4.9-2.3,6.3-6.5,7.1-11.5c1.4-8.8,1.6-8.8-5.9-13.4c-2.3-1.4-4.1-3-5.6-5.3c-3.3-4.8-8-7.9-13.8-8.8
@@ -146,30 +143,30 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 	c-0.8-0.1-1.7-0.2-2.5-0.4c-2.7-0.6-4.3-2.3-4.1-5c0.2-2.9,2.1-4.5,5-4.6c4.5-0.1,8.8,0.9,12.8,3c10.8,5.7,16.1,14.8,16.4,26.8
 	C97,115.2,96.9,119.6,96.9,124.1z M145.1,35c0.1,2.6-2,4.8-4.6,5c-2.6,0.1-5-2.2-5-4.9c0-2.6,2.1-4.7,4.8-4.7
 	C142.9,30.3,145.1,32.3,145.1,35z"></path>
-                            </svg>
+                                </svg>
+                            </div>
+                            <h2 class="u-text u-text-default u-text-2">
+                                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-5-dark-2 u-btn-1"
+                                   href="{% url 'subcategory' pk=category.pk %}">{{ $category->title }}<span
+                                        class="u-text-black"></span>
+                                </a>
+                            </h2>
+                            {{--                        {% if user.is_superuser %}--}}
+                            <a href="{{url('edit/'.$category->id)}}"
+                               class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1 u-text-3">Edit
+                                category</a>
+
+                            <a href="{{url('delete/'.$category->id)}}"
+                               class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1 u-text-3">Delete
+                                category</a>
+                            {{--                        {% endif %}--}}
+                            {{--                        {% for subcategory in category.subcategories %}--}}
+
+                            {{--                        <p class="u-text u-text-default u-text-3"><a--}}
+                            {{--                                href="{% url 'topics' pk=category.pk ek=subcategory.pk %}">{{ subcategory.title }}</a>--}}
+                            {{--                        </p>--}}
+                            {{--                        {% endfor %}--}}
                         </div>
-                        <h2 class="u-text u-text-default u-text-2">
-                            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-5-dark-2 u-btn-1"
-                               href="{% url 'subcategory' pk=category.pk %}">{{ $category->title }}<span
-                                    class="u-text-black"></span>
-                            </a>
-                        </h2>
-{{--                        {% if user.is_superuser %}--}}
-                        <a href="{% url 'category_edit' category.pk %}"
-                           class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1 u-text-3">Edit
-                            category</a>
-
-                        <a href="{% url 'category_delete' category.pk %}"
-                           class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1 u-text-3">Delete
-                            category</a>
-{{--                        {% endif %}--}}
-{{--                        {% for subcategory in category.subcategories %}--}}
-
-{{--                        <p class="u-text u-text-default u-text-3"><a--}}
-{{--                                href="{% url 'topics' pk=category.pk ek=subcategory.pk %}">{{ subcategory.title }}</a>--}}
-{{--                        </p>--}}
-{{--                        {% endfor %}--}}
-                    </div>
                     <a href="{% url 'cat_info' %}"
                        class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1 u-text-3">Show
                         more!</a>
@@ -184,18 +181,6 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
             </div>
         </div>
     </div>
-
-{{--    {% if page_obj.has_previous %}--}}
-{{--    <a href="?page=1">first</a>--}}
-{{--    <a href="?page={{ page_obj.previous_page_number }}">previous</a>--}}
-{{--    {% endif %}--}}
-
-{{--    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.--}}
-
-{{--    {% if page_obj.has_next %}--}}
-{{--    <a href="?page={{ page_obj.next_page_number }}">next</a>--}}
-{{--    <a href="?page={{ page_obj.paginator.num_pages }}">last</a>--}}
-{{--    {% endif %}--}}
     @endsection
 </section>
 {{--{% endblock %}--}}
