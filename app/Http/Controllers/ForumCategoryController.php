@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ForumCategory;
+use App\Models\ForumTopics;
 use Illuminate\Http\Request;
 
 class ForumCategoryController extends Controller
@@ -10,10 +11,12 @@ class ForumCategoryController extends Controller
 
     public function index()
     {
+        $topics = ForumTopics::all();
         $categories = ForumCategory::latest()->take(3)->get();
-        return view('index', ['categories' => $categories]);
+        return view('index', ['categories' => $categories, 'topics' => $topics]);
 
     }
+
 
     public function category_create()
     {

@@ -21,13 +21,13 @@ use App\Http\Controllers\AboutPageController;
 Route::get('/', [ForumCategoryController::class, 'index'])->name('index');
 Route::get('/create/', [ForumCategoryController::class, 'category_create'])->name('category-create');
 Route::post('/custom-create/', [ForumCategoryController::class, 'category_create_custom'])->name('category-create-custom');
-Route::get('/edit/{id}', [ForumCategoryController::class, 'category_edit'])->name('category-edit');
-Route::post('/custom-edit/{id}', [ForumCategoryController::class, 'category_edit_custom'])->name('category-edit-custom');
-Route::get('/delete/{id}', [ForumCategoryController::class, 'category_delete'])->name('category-delete');
-Route::post('/custom-delete/{id}', [ForumCategoryController::class, 'category_delete_custom'])->name('category-delete-custom');
+Route::get('/edit/{id}/', [ForumCategoryController::class, 'category_edit'])->name('category-edit');
+Route::post('/custom-edit/{id}/', [ForumCategoryController::class, 'category_edit_custom'])->name('category-edit-custom');
+Route::get('/delete/{id}/', [ForumCategoryController::class, 'category_delete'])->name('category-delete');
+Route::post('/custom-delete/{id}/', [ForumCategoryController::class, 'category_delete_custom'])->name('category-delete-custom');
 
 //Topics
-Route::get('/topics/', [ForumTopicsController::class, 'forum_topics'])->name('topics');
+Route::get('/topics/{id}/', [ForumTopicsController::class, 'forum_topics'])->name('topics');
 Route::get('/topics/create/', [ForumTopicsController::class, 'forum_topics_create'])->name('topic-create');
 Route::get('/topics/edit/', [ForumTopicsController::class, 'forum_topics_edit'])->name('topic-edit');
 Route::get('/topics/delete/', [ForumTopicsController::class, 'forum_topics_delete'])->name('topic-delete');

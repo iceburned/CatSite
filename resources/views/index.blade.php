@@ -114,13 +114,9 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                            class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1">Create
                             Category</a>
                     </div>
-                    {{--                {% endif %}--}}
                 @endif
-                {{--                {#              ------------------- first post----------------------#}--}}
-                {{--                {% for category in object_list %}--}}
                 @foreach($categories as $category)
                     <p>{{$category->id}}</p>
-
                     <div
                         class="u-container-style u-custom-item u-list-item u-palette-3-light-3 u-radius-30 u-repeater-item u-shape-round"
                         title="Forum">
@@ -147,11 +143,10 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                             </div>
                             <h2 class="u-text u-text-default u-text-2">
                                 <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-5-dark-2 u-btn-1"
-                                   href="{% url 'subcategory' pk=category.pk %}">{{ $category->title }}<span
+                                   href="{{url('topics/'.$category->id)}}">{{ $category->title }}<span
                                         class="u-text-black"></span>
                                 </a>
                             </h2>
-                            {{--                        {% if user.is_superuser %}--}}
                             <a href="{{url('edit/'.$category->id)}}"
                                class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1 u-text-3">Edit
                                 category</a>
@@ -159,13 +154,13 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                             <a href="{{url('delete/'.$category->id)}}"
                                class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1 u-text-3">Delete
                                 category</a>
-                            {{--                        {% endif %}--}}
-                            {{--                        {% for subcategory in category.subcategories %}--}}
 
-                            {{--                        <p class="u-text u-text-default u-text-3"><a--}}
-                            {{--                                href="{% url 'topics' pk=category.pk ek=subcategory.pk %}">{{ subcategory.title }}</a>--}}
-                            {{--                        </p>--}}
-                            {{--                        {% endfor %}--}}
+                            @foreach($topics as $topic)
+                                @if($topic->forum_category_id == $category->id)
+                                <p class="u-text u-text-default u-text-3"><a
+                                        href="{{url('topics/'.$topic->id)}}">{{ $topic->title }} -- {{$topic->id}}</a></p>
+                                @endif
+                            @endforeach
                         </div>
                     <a href="{% url 'cat_info' %}"
                        class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-dark-1 u-radius-6 u-btn-1 u-text-3">Show
