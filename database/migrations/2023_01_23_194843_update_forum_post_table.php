@@ -13,7 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('forum_posts', function (Blueprint $table) {
+            $table->foreignId('forum_topics_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+        });
     }
 
     /**
